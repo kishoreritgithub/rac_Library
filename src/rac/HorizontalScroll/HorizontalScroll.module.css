@@ -1,0 +1,89 @@
+.outer {
+  position: relative;
+}
+
+.pin {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 48px 0;
+}
+
+.header {
+  padding: 0 var(--rac-pad, 24px);
+}
+
+/* Default (small screens, reduced motion): native swipe strip */
+.viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  padding: 0 var(--rac-pad, 24px);
+  will-change: transform;
+}
+
+.panel {
+  flex: 0 0 auto;
+  display: flex;
+  width: min(82vw, 440px);
+  scroll-snap-align: center;
+}
+
+.panel > * {
+  flex: 1;
+}
+
+/* Pinned mode (set by the component on wide screens) */
+.pinned .pin {
+  position: sticky;
+  height: 100vh;
+  height: 100svh;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pinned .viewport {
+  overflow: hidden;
+  scroll-snap-type: none;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 var(--rac-pad, 24px);
+  font: 600 13px/1 var(--rac-font, system-ui);
+  font-variant-numeric: tabular-nums;
+  color: var(--rac-ink-2, #555);
+}
+
+.count {
+  min-width: 5.5ch;
+}
+
+.rail {
+  flex: 1;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--rac-line, #ddd);
+  overflow: hidden;
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  background: var(--rac-accent, #5b3df5);
+  transform: scaleX(0);
+  transform-origin: left center;
+}

@@ -1,0 +1,145 @@
+.wrap {
+  max-width: var(--rac-wrap);
+  margin: 0 auto;
+  padding: 0 var(--rac-pad);
+}
+
+.hero {
+  padding: clamp(80px, 14vh, 160px) 0 clamp(72px, 12vh, 140px);
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.h1 {
+  max-width: 14ch;
+  margin-top: 18px;
+  font-family: var(--rac-font-display);
+  font-size: clamp(44px, 7vw, 92px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.lead {
+  max-width: 52ch;
+  margin-top: 24px;
+  font-size: clamp(17px, 1.5vw, 20px);
+  opacity: 0.8;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.hero .row {
+  margin-top: 36px;
+}
+
+.band {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rac-line);
+  background: var(--rac-surface-2);
+}
+
+.chip {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--rac-ink-2);
+}
+
+.section {
+  scroll-margin-top: 64px;
+  padding: clamp(64px, 10vh, 120px) 0;
+  border-bottom: 1px solid var(--rac-line);
+}
+
+.h2 {
+  margin-top: 10px;
+  font-family: var(--rac-font-display);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.note {
+  max-width: 56ch;
+  margin-top: 12px;
+  color: var(--rac-ink-2);
+}
+
+.code {
+  margin: 20px 0 36px;
+  padding: 16px 18px;
+  overflow-x: auto;
+  border-radius: var(--rac-radius-sm);
+  background: var(--rac-night);
+  color: var(--rac-night-ink);
+  font: 13.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.card,
+.panel {
+  height: 100%;
+  padding: 26px;
+  border: 1px solid var(--rac-line);
+  border-radius: var(--rac-radius);
+  background: var(--rac-surface);
+}
+
+.card h3,
+.panel h3 {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.card p,
+.panel p {
+  margin-top: 8px;
+  color: var(--rac-ink-2);
+  font-size: 15px;
+}
+
+.stripSection {
+  border-bottom: 1px solid var(--rac-line);
+}
+
+.panel {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel h3 {
+  margin-top: auto;
+  font-size: 28px;
+}
+
+.num {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--rac-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.footer {
+  padding: 40px 0;
+  color: var(--rac-mute);
+  font-size: 14px;
+}

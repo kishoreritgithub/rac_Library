@@ -1,0 +1,228 @@
+.nav {
+  --nav-bg: var(--rac-bg, #fff);
+  --nav-ink: var(--rac-ink, #111);
+  --nav-line: var(--rac-line, #ddd);
+  z-index: 50;
+  font-family: var(--rac-font, system-ui);
+  color: var(--nav-ink);
+}
+
+.dark {
+  --nav-bg: var(--rac-night, #0f1014);
+  --nav-ink: var(--rac-night-ink, #f5f4ee);
+  --nav-line: rgb(255 255 255 / 0.14);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 64px;
+  padding: 0 var(--rac-pad, 24px);
+  background: color-mix(in srgb, var(--nav-bg) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--rac-dur-fast, 220ms) ease;
+}
+
+.scrolled .bar,
+.open .bar {
+  border-bottom-color: var(--nav-line);
+}
+
+.open .bar {
+  background: var(--nav-bg);
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: auto;
+}
+
+.links {
+  display: flex;
+  gap: 28px;
+}
+
+.link {
+  position: relative;
+  padding: 6px 0;
+  color: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Underline that wipes in from the left and out to the right */
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 360ms var(--rac-ease, ease-out);
+}
+
+.link:hover::after,
+.link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.burger {
+  display: none;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: var(--rac-radius-sm, 8px);
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.burger span {
+  position: absolute;
+  left: 9px;
+  right: 9px;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 380ms var(--rac-ease, ease-out);
+}
+
+.burger span:first-child {
+  transform: translateY(-4px);
+}
+
+.burger span:last-child {
+  transform: translateY(4px);
+}
+
+.open .burger span:first-child {
+  transform: rotate(45deg);
+}
+
+.open .burger span:last-child {
+  transform: rotate(-45deg);
+}
+
+.menu,
+.scrim {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .links,
+  .actions {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .menu {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 64px;
+    left: 0;
+    right: 0;
+    padding: 12px var(--rac-pad, 24px) 28px;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-line);
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+    transition:
+      clip-path 480ms var(--rac-ease-in-out, ease-in-out),
+      visibility 0s linear 480ms;
+  }
+
+  .open .menu {
+    clip-path: inset(0);
+    visibility: visible;
+    transition:
+      clip-path 480ms var(--rac-ease-in-out, ease-in-out),
+      visibility 0s;
+  }
+
+  .menuLinks {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menuLink {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--nav-line);
+    color: inherit;
+    font-size: 22px;
+    font-weight: 600;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 360ms ease,
+      transform 480ms var(--rac-ease, ease-out);
+  }
+
+  .open .menuLink {
+    opacity: 1;
+    transform: none;
+  }
+
+  .menuActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: rgb(0 0 0 / 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 360ms ease;
+  }
+
+  .open .scrim {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .open .menu,
+  .menuLink,
+  .scrim,
+  .burger span,
+  .link::after {
+    transition-duration: 1ms;
+    transition-delay: 0ms !important;
+  }
+}

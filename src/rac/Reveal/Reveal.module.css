@@ -1,0 +1,28 @@
+.reveal {
+  opacity: 0;
+  transform: translate3d(var(--rac-reveal-x, 0), var(--rac-reveal-y, 28px), 0);
+  transition:
+    opacity var(--rac-reveal-dur, var(--rac-dur, 700ms)) var(--rac-ease, ease-out) var(--rac-reveal-delay, 0ms),
+    transform var(--rac-reveal-dur, var(--rac-dur, 700ms)) var(--rac-ease, ease-out) var(--rac-reveal-delay, 0ms),
+    filter var(--rac-reveal-dur, var(--rac-dur, 700ms)) var(--rac-ease, ease-out) var(--rac-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.blur {
+  filter: blur(10px);
+}
+
+.in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transform: none;
+    filter: none;
+    transition-duration: 1ms;
+    transition-delay: 0ms;
+  }
+}

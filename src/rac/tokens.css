@@ -1,0 +1,43 @@
+/*
+ * RAC design tokens.
+ * Import this file once (e.g. in app/layout.tsx). Every component reads these
+ * variables, so re-theming the whole library means editing only this file,
+ * or overriding the variables on any wrapper element.
+ */
+:root {
+  /* Colour */
+  --rac-bg: #fbfaf5;
+  --rac-surface: #ffffff;
+  --rac-surface-2: #f1efe6;
+  --rac-line: #e0ddd0;
+  --rac-ink: #17181c;
+  --rac-ink-2: #4b4d57;
+  --rac-mute: #8a8c96;
+  --rac-accent: #5b3df5;
+  --rac-accent-2: #4226d1;
+  --rac-accent-ink: #ffffff;
+  --rac-warn: #e5484d;
+
+  /* Dark surface (GlowBackground, NavDrawer dark) */
+  --rac-night: #0f1014;
+  --rac-night-ink: #f5f4ee;
+  --rac-glow-1: #5b3df5;
+  --rac-glow-2: #12b5a6;
+  --rac-glow-3: #f59e3d;
+
+  /* Type */
+  --rac-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --rac-font-display: var(--rac-font);
+
+  /* Shape and space */
+  --rac-radius: 14px;
+  --rac-radius-sm: 8px;
+  --rac-pad: clamp(20px, 4vw, 56px);
+  --rac-wrap: 1200px;
+
+  /* Motion */
+  --rac-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --rac-ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --rac-dur: 700ms;
+  --rac-dur-fast: 220ms;
+}

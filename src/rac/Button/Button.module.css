@@ -1,0 +1,132 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-family: var(--rac-font, system-ui);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background var(--rac-dur-fast, 220ms) ease,
+    color var(--rac-dur-fast, 220ms) ease,
+    border-color var(--rac-dur-fast, 220ms) ease,
+    box-shadow var(--rac-dur-fast, 220ms) var(--rac-ease, ease-out),
+    transform var(--rac-dur-fast, 220ms) var(--rac-ease, ease-out);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--rac-accent, #5b3df5);
+  outline-offset: 3px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Sizes */
+.sm {
+  padding: 9px 16px;
+  font-size: 13.5px;
+}
+
+.md {
+  padding: 13px 22px;
+  font-size: 15px;
+}
+
+.lg {
+  padding: 17px 30px;
+  font-size: 17px;
+}
+
+/* Variants */
+.solid {
+  background: var(--rac-accent, #5b3df5);
+  color: var(--rac-accent-ink, #fff);
+}
+
+.solid:hover {
+  background: var(--rac-accent-2, #4226d1);
+}
+
+.outline {
+  border-color: currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+.outline:hover {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.ghost {
+  background: transparent;
+  color: inherit;
+}
+
+.ghost:hover {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+/* Hard offset shadow that appears as the button lifts */
+.lift {
+  box-shadow: 0 0 0 0 var(--rac-ink, #111);
+}
+
+.lift:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 var(--rac-ink, #111);
+}
+
+.lift:active {
+  transform: none;
+  box-shadow: 0 0 0 0 var(--rac-ink, #111);
+}
+
+/* Arrow: one slides out to the right while a second slides in from the left */
+.arrow {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+}
+
+.arrow svg {
+  position: absolute;
+  inset: 0;
+  transition: transform 420ms var(--rac-ease, ease-out);
+}
+
+.arrow svg:last-child {
+  transform: translateX(-130%);
+}
+
+.btn:hover .arrow svg:first-child {
+  transform: translateX(130%);
+}
+
+.btn:hover .arrow svg:last-child {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .arrow svg {
+    transition-duration: 1ms;
+  }
+  .btn:active,
+  .lift:hover {
+    transform: none;
+  }
+}

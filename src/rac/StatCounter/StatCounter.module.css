@@ -1,0 +1,55 @@
+.root {
+  position: relative;
+  padding-top: 18px;
+  font-family: var(--rac-font, system-ui);
+  color: var(--rac-ink, #111);
+}
+
+/* Rule that draws itself when the stat enters the viewport */
+.root::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1100ms var(--rac-ease, ease-out);
+}
+
+.in::before {
+  transform: scaleX(1);
+}
+
+.value {
+  font-family: var(--rac-font-display, inherit);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  margin-top: 10px;
+  font-size: 14.5px;
+  line-height: 1.4;
+  opacity: 0.7;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root::before {
+    transition: none;
+  }
+}

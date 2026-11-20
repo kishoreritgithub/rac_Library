@@ -1,0 +1,86 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 20px;
+  border: 1px solid var(--rac-line, #ddd);
+  border-radius: var(--rac-radius, 14px);
+  background: var(--rac-surface, #fff);
+  color: var(--rac-ink, #111);
+  font-family: var(--rac-font, system-ui);
+  transition:
+    border-color var(--rac-dur-fast, 220ms) ease,
+    color var(--rac-dur-fast, 220ms) ease;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rac-ink-2, #555);
+}
+
+.units {
+  display: inline-flex;
+  gap: 14px;
+}
+
+.unit {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 2.6ch;
+  overflow: hidden;
+}
+
+.value {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  animation: tick 380ms var(--rac-ease, ease-out);
+}
+
+.name {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rac-mute, #888);
+}
+
+.doneText {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.urgent {
+  border-color: var(--rac-warn, #e5484d);
+  color: var(--rac-warn, #e5484d);
+}
+
+.urgent .label {
+  color: inherit;
+}
+
+.done {
+  color: var(--rac-mute, #888);
+}
+
+@keyframes tick {
+  from {
+    opacity: 0;
+    transform: translateY(45%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .value {
+    animation: none;
+  }
+}

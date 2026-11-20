@@ -1,0 +1,96 @@
+.root {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--rac-night, #0f1014);
+  color: var(--rac-night-ink, #f5f4ee);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.g1 {
+  top: -18%;
+  right: -8%;
+  width: 55%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, var(--rac-glow-1, #5b3df5), transparent 68%);
+}
+
+.g2 {
+  bottom: -28%;
+  left: -12%;
+  width: 60%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, var(--rac-glow-2, #12b5a6), transparent 68%);
+}
+
+.g3 {
+  top: 34%;
+  left: 42%;
+  width: 30%;
+  aspect-ratio: 1;
+  opacity: 0.28;
+  background: radial-gradient(circle, var(--rac-glow-3, #f59e3d), transparent 68%);
+}
+
+.animated .g1 {
+  animation: drift-a 18s ease-in-out infinite alternate;
+}
+
+.animated .g2 {
+  animation: drift-b 22s ease-in-out infinite alternate;
+}
+
+.animated .g3 {
+  animation: drift-c 15s ease-in-out infinite alternate;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgb(255 255 255 / 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+
+.content {
+  position: relative;
+}
+
+@keyframes drift-a {
+  to {
+    transform: translate3d(-12%, 10%, 0) scale(1.12);
+  }
+}
+
+@keyframes drift-b {
+  to {
+    transform: translate3d(14%, -8%, 0) scale(0.92);
+  }
+}
+
+@keyframes drift-c {
+  to {
+    transform: translate3d(-20%, -16%, 0) scale(1.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated .glow {
+    animation: none;
+  }
+}
